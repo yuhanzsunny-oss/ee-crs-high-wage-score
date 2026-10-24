@@ -1,12 +1,12 @@
 ---
 name: ee-crs-high-wage-score
-description: 计算加拿大 Express Entry (EE) 的 CRS 分数,并按 2026-11-03 起生效的"高薪职业加分"新政策(offer 加分 / 12 个月高薪岗位经验加分,Tier 1/2/3,150 封顶)判断某人能加多少分。Use whenever the user asks about CRS 算分、EE 新政策加分、"OFFER 加分"、high-wage occupation points、某个 NOC 属于哪一档、雇主信/Employment Verification Letter 是否有助于加分、CEC 分数线与自己差多少、英语成绩提到 CLB9/10 后总分、新政策对谁最有利、什么时候把 offer 加进档案、帮朋友或客户算分——即使用户没说"skill"、没提 CRS 或 EE,只说"我能不能加分""新政策我受益吗""我现在多少分"也要用。
+description: 计算加拿大 Express Entry (EE) 的 CRS 分数,并按 2026-11-03 起生效的"高薪职业加分"新政策(offer 加分 / 12 个月高薪岗位经验加分,Tier 1/2/3;工作经验与 offer 二选一取高,最高 150)判断某人能加多少分。Use whenever the user asks about CRS 算分、EE 新政策加分、"OFFER 加分"、high-wage occupation points、某个 NOC 属于哪一档、雇主信/Employment Verification Letter 是否有助于加分、CEC 分数线与自己差多少、英语成绩提到 CLB9/10 后总分、新政策对谁最有利、什么时候把 offer 加进档案、帮朋友或客户算分——即使用户没说"skill"、没提 CRS 或 EE,只说"我能不能加分""新政策我受益吗""我现在多少分"也要用。
 ---
 
 # EE 新政策算分(CRS + 高薪职业加分)
 
 帮用户回答三类问题:**① 我现在/之后多少分 ② 新政策能给我加多少 ③ 材料要怎么备才站得住**。
-规则细节、官方来源、"哪些是推断"在 `references/policy-rules.md`;分数线与池子数据在
+规则细节、官方来源、"官方没写什么"在 `references/policy-rules.md`;分数线与池子数据在
 `references/market-snapshot-2026-10.md`(带日期,会过期)。
 
 ## 工作流程
@@ -19,7 +19,7 @@ description: 计算加拿大 Express Entry (EE) 的 CRS 分数,并按 2026-11-03
 2. **确定岗位档位。** `python scripts/crs_calc.py --lookup <NOC或关键词>`。
    不在表里就明说"该 NOC 不在 186 个高薪职业清单内,本政策加 0 分",并列出最接近、且**用户实际职责真能对上**的 NOC;
    不要为了加分建议用户套一个职责对不上的 NOC。
-3. **用脚本算,不要心算。** 对话里手算出过 678/676、"170"、忽略 150 封顶等错误。
+3. **用脚本算,不要心算。** 手算很容易错(如把 offer 加在年限分上、把 70+100 当 170)。
    ```
    python scripts/crs_calc.py --age 27 --edu bachelor --clb 9 --cdn-years 1 \
        --exp-noc 21231 --offer-noc 21231
@@ -62,5 +62,5 @@ description: 计算加拿大 Express Entry (EE) 的 CRS 分数,并按 2026-11-03
 - `scripts/crs_calc.py` — 单身申请人的 CRS 计算器 + NOC 档位查询
 - `scripts/test_crs_calc.py` — 回归测试(虚构档案,期望值均为按官方表手算)
 - `references/high-wage-noc-list.tsv` — 官方 186 个 NOC 的档位表(来自 IRCC,页面日期 2026-10-16)
-- `references/policy-rules.md` — 规则、来源、推断与未知项、常见算错点
+- `references/policy-rules.md` — 规则、来源、官方没写的项、常见算错点(含本 skill 犯过的错)
 - `references/market-snapshot-2026-10.md` — 抽签分数线、池子分布、受益人群(⚠️带日期)

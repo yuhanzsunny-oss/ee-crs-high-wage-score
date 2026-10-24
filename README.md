@@ -3,7 +3,7 @@
 A [Claude Code](https://claude.com/claude-code) skill (plus a standalone Python calculator) for the
 Canada **Express Entry CRS score** under the **high-wage occupation points that take effect on 2026-11-03**.
 
-适用于加拿大 Express Entry:算 CRS 分数,并判断 2026-11-03 起的"高薪职业加分"(offer / 12 个月经验,Tier 1/2/3,150 封顶)能给你加多少分。
+适用于加拿大 Express Entry:算 CRS 分数,并判断 2026-11-03 起的"高薪职业加分"(offer / 12 个月经验,Tier 1/2/3;工作经验与 offer 二选一取高,最高 150)能给你加多少分。
 
 ## What it does
 
