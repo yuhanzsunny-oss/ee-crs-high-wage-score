@@ -2,13 +2,15 @@
 """Express Entry CRS calculator (single applicant) with the 2026-11-03 high-wage points.
 
 Tables: IRCC "CRS criteria: single applicant" page, dated 2026-10-16.
-High-wage rules: IRCC backgrounder "Changes to Express Entry for high-wage occupations".
-The way the 150 cap combines duration points with the new points is INFERRED
-(see references/policy-rules.md); the output says so.
+Labour Market Integration factor: IRCC "Changes to Express Entry" page (express-entry/changes.html):
+  "You can only receive points for Canadian work experience or an eligible job offer, not both."
+  work path  = years-of-work points + high-wage experience points   (max 80 + 70 = 150)
+  offer path = fixed job-offer points (100 / 70 / 50)
+  factor     = the higher of the two.  The offer does NOT stack on the years-of-work points.
 
 Usage examples:
   python crs_calc.py --age 27 --edu bachelor --clb 9 9 9 9 --cdn-years 1 \
-      --offer-noc 21231
+      --exp-noc 21231 --offer-noc 21231
   python crs_calc.py --json profile.json
   python crs_calc.py --lookup 21231        # tier of a NOC code
   python crs_calc.py --lookup "software"   # search titles
@@ -31,7 +33,7 @@ EDU_LOW = {"1yr", "2yr", "bachelor"}          # transferability: 13/25 row
 CDN_WORK = {0: 0, 1: 40, 2: 53, 3: 64, 4: 72}  # 5+ -> 80
 EXP_BONUS = {1: 70, 2: 40, 3: 20}              # 12 months in a listed occupation
 OFFER_BONUS = {1: 100, 2: 70, 3: 50}           # qualifying job offer
-LMIF_CAP = 150                                 # single; 140 with spouse (unsupported here)
+LMIF_MAX = 150                                 # single; 140 with spouse (unsupported here)
 
 
 def age_points(age):
@@ -126,10 +128,13 @@ def compute(p, policy=True):
     exp_b = EXP_BONUS.get(exp_t, 0)
     offer_b = OFFER_BONUS.get(offer_t, 0)
     if policy:
-        bonus = max(exp_b, offer_b)
-        bd["canadian_work_incl_policy"] = min(LMIF_CAP, dur + bonus)
-        bonus_note = {"duration_points": dur, "exp_bonus": exp_b, "offer_bonus": offer_b,
-                      "applied_bonus": bonus, "capped": dur + bonus > LMIF_CAP}
+        work_path = dur + exp_b
+        offer_path = offer_b
+        bd["canadian_work_incl_policy"] = max(work_path, offer_path)
+        assert bd["canadian_work_incl_policy"] <= LMIF_MAX
+        bonus_note = {"work_path": work_path, "offer_path": offer_path,
+                      "selected": "offer" if offer_path > work_path else "work",
+                      "years_points": dur, "exp_bonus": exp_b}
     else:
         bd["canadian_work_incl_policy"] = dur
 
@@ -150,8 +155,8 @@ def report(p):
     print(json.dumps({
         "with_policy": on, "without_policy_total": off["total"],
         "policy_delta": on["total"] - off["total"],
-        "warning": "150-cap composition is inferred (duration + max(exp,offer), capped 150); "
-                   "re-check against the official CRS page after 2026-11-03. Single applicant only.",
+        "note": "Labour Market Integration factor = max(work path, offer path), per IRCC changes.html. "
+                "Single applicant only. Re-check the official CRS tool after 2026-11-03.",
     }, ensure_ascii=False, indent=2))
 
 
@@ -187,7 +192,8 @@ def main():
     ap.add_argument("--sibling", action="store_true")
     ap.add_argument("--french", choices=["none", "25", "50"], default="none")
     ap.add_argument("--pnp", action="store_true")
-    ap.add_argument("--exp-noc", help="NOC of the 12-month Canadian experience")
+    ap.add_argument("--exp-noc", help="NOC of the 12+ months of Canadian experience, if that job is on the "
+                    "high-wage list (pass it explicitly; it is NOT assumed to equal the offer's NOC)")
     ap.add_argument("--offer-noc", help="NOC of the qualifying job offer")
     a = ap.parse_args()
 
@@ -205,8 +211,7 @@ def main():
         p = {"age": a.age, "edu": a.edu, "clb": clb, "second_clb": a.second_clb,
              "cdn_years": a.cdn_years, "foreign_years": a.foreign_years,
              "cdn_edu": a.cdn_edu, "sibling": a.sibling, "french": a.french,
-             "pnp": a.pnp, "exp_noc": a.exp_noc or a.offer_noc, "offer_noc": a.offer_noc}
-        # Without a separate --exp-noc, assume the experience is in the offer's NOC
+             "pnp": a.pnp, "exp_noc": a.exp_noc, "offer_noc": a.offer_noc}
     report(p)
 
 

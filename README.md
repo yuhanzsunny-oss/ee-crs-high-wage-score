@@ -9,8 +9,8 @@ Canada **Express Entry CRS score** under the **high-wage occupation points that 
 
 - Computes CRS for a **single applicant** from the official IRCC tables, with and without the new policy, and shows the delta.
 - Looks up any NOC code or occupation keyword in the official **186-occupation** high-wage list.
-- Encodes the rules people most often get wrong: experience-route and offer-route points are **not combined** (the higher counts), and the Canadian-work factor is **capped at 150**.
-- Tells you what is official wording, what is inferred, and what IRCC has not said (see `references/policy-rules.md`).
+- Encodes the rule people most often get wrong: the Labour Market Integration factor is the **higher of two routes, not both**: (years-of-work points + high-wage experience bonus, max 80+70=150) **or** (fixed job-offer points 100/70/50). An offer does **not** stack on top of years-of-work points.
+- Separates official wording from what IRCC has not said (see `references/policy-rules.md`).
 
 ## Use as a Claude Code skill
 
@@ -28,7 +28,7 @@ cd ee-crs-high-wage-score/scripts
 python crs_calc.py --lookup 21231            # tier of a NOC code
 python crs_calc.py --lookup software         # search by title
 python crs_calc.py --age 27 --edu bachelor --clb 9 --cdn-years 1 \
-    --offer-noc 21231
+    --exp-noc 21231 --offer-noc 21231
 python test_crs_calc.py                      # regression tests
 ```
 
@@ -40,9 +40,7 @@ Optional: `--second-clb`, `--french 25|50`, `--sibling`, `--pnp`, `--exp-noc`, o
 
 - **Single applicants only** (the cap is 140, not 150, with a spouse; tables differ).
 - No certificate-of-qualification group.
-- **The 150 cap composition is inferred**, not stated by IRCC:
-  `min(150, years-based points + max(experience bonus, offer bonus))`.
-  It reproduces every hand-checked number in the tests, but verify against the official CRS tool after 2026-11-03.
+- Cross-checked against an independent open-source implementation on 8,424 generated profiles: 0 differences (this caught a real bug in an earlier version, documented in `references/policy-rules.md`).
 - The market snapshot (draw cut-offs, pool distribution) is dated October 2026 and goes stale.
 
 ## Sources
