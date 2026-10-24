@@ -1,0 +1,187 @@
+noc	tier	title
+00011	1	Senior government managers and officials
+00012	1	Senior managers - financial, communications and other business services
+00013	1	Senior managers - health, education, social and community services and membership organizations
+10010	1	Financial managers
+10011	1	Human resources managers
+10012	1	Purchasing managers
+10020	1	Insurance, real estate and financial brokerage managers
+10021	1	Banking, credit and other investment managers
+20010	1	Engineering managers
+20011	1	Architecture and science managers
+20012	1	Computer and information systems managers
+21330	1	Mining engineers
+21332	1	Petroleum engineers
+31100	1	Specialists in clinical and laboratory medicine
+31101	1	Specialists in surgery
+31102	1	General practitioners and family physicians
+31103	1	Veterinarians
+31302	1	Nurse practitioners
+31303	1	Physician assistants, midwives and allied health professionals
+40010	1	Government managers - health and social policy development and program administration
+40011	1	Government managers - economic analysis, policy development and program administration
+40012	1	Government managers - education policy development and program administration
+40019	1	Other managers in public administration
+40040	1	Commissioned police officers and related occupations in public protection services
+40041	1	Fire chiefs and senior firefighting officers
+41100	1	Judges
+41101	1	Lawyers and Quebec notaries
+41200	1	University professors and lecturers
+60010	1	Corporate sales managers
+80010	1	Managers in natural resources production and fishing
+90011	1	Utilities managers
+00014	2	Senior managers - trade, broadcasting and other services
+00015	2	Senior managers - construction, transportation, production and utilities
+10019	2	Other administrative services managers
+10022	2	Advertising, marketing and public relations managers
+10029	2	Other business services managers
+10030	2	Telecommunication carriers managers
+11103	2	Securities agents, investment dealers and brokers
+11201	2	Professional occupations in business management consulting
+21100	2	Physicists and astronomers
+21102	2	Geoscientists and oceanographers
+21103	2	Meteorologists and climatologists
+21109	2	Other professional occupations in physical sciences
+21111	2	Forestry professionals
+21120	2	Public and environmental health and safety professionals
+21202	2	Urban and land use planners
+21210	2	Mathematicians, statisticians and actuaries
+21211	2	Data scientists
+21220	2	Cybersecurity specialists
+21221	2	Business systems specialists
+21222	2	Information systems specialists
+21223	2	Database analysts and data administrators
+21230	2	Computer systems developers and programmers
+21231	2	Software engineers and designers
+21232	2	Software developers and programmers
+21300	2	Civil engineers
+21301	2	Mechanical engineers
+21310	2	Electrical and electronics engineers
+21311	2	Computer engineers (except software engineers and designers)
+21320	2	Chemical engineers
+21321	2	Industrial and manufacturing engineers
+21322	2	Metallurgical and materials engineers
+21331	2	Geological engineers
+21390	2	Aerospace engineers
+21399	2	Other professional engineers
+22231	2	Engineering inspectors and regulatory officers
+22312	2	Industrial instrument technicians and mechanics
+30010	2	Managers in health care
+31110	2	Dentists
+31112	2	Audiologists and speech-language pathologists
+31120	2	Pharmacists
+31200	2	Psychologists
+31202	2	Physiotherapists
+31203	2	Occupational therapists
+31300	2	Nursing coordinators and supervisors
+31301	2	Registered nurses and registered psychiatric nurses
+32111	2	Dental hygienists and dental therapists
+40020	2	Administrators - post-secondary education and vocational training
+40021	2	School principals and administrators of elementary and secondary education
+40030	2	Managers in social, community and correctional services
+40042	2	Commissioned officers of the Canadian Armed Forces
+41210	2	College and other vocational instructors
+41220	2	Secondary school teachers
+41221	2	Elementary school and kindergarten teachers
+41310	2	Police investigators and other investigative occupations
+41311	2	Probation and parole officers
+41320	2	Educational counsellors
+41401	2	Economists and economic policy researchers and analysts
+41402	2	Business development officers and market researchers and analysts
+41404	2	Health policy researchers, consultants and program officers
+41407	2	Program officers unique to government
+42100	2	Police officers (except commissioned)
+42101	2	Firefighters
+50010	2	Library, archive, museum and art gallery managers
+50011	2	Managers - publishing, motion pictures, broadcasting and performing arts
+51100	2	Librarians
+70010	2	Construction managers
+70012	2	Facility operation and maintenance managers
+70020	2	Managers in transportation
+70021	2	Postal and courier services managers
+72011	2	Contractors and supervisors, electrical trades and telecommunications occupations
+72012	2	Contractors and supervisors, pipefitting trades
+72023	2	Supervisors, railway transport operations
+72103	2	Boilermakers
+72202	2	Power system electricians
+72203	2	Electrical power line and cable workers
+72301	2	Steamfitters, pipefitters and sprinkler system installers
+72406	2	Elevator constructors and mechanics
+72600	2	Air pilots, flight engineers and flying instructors
+72601	2	Air traffic controllers and related occupations
+72604	2	Railway traffic controllers and marine traffic regulators
+73310	2	Railway and yard locomotive engineers
+82020	2	Supervisors, mining and quarrying
+82021	2	Contractors and supervisors, oil and gas drilling and services
+83101	2	Oil and gas well drillers, servicers, testers and related workers
+90010	2	Manufacturing managers
+92011	2	Supervisors, petroleum, gas and chemical processing and utilities
+92100	2	Power engineers and power systems operators
+93100	2	Central control and process operators, mineral and metal processing
+93101	2	Central control and process operators, petroleum, gas and chemical processing
+00010	3	Legislators
+11100	3	Financial auditors and accountants
+11101	3	Financial and investment analysts
+11102	3	Financial advisors
+11109	3	Other financial officers
+11200	3	Human resources professionals
+12201	3	Insurance adjusters and claims examiners
+12203	3	Assessors, business valuators and appraisers
+21101	3	Chemists
+21110	3	Biologists and related scientists
+21112	3	Agricultural representatives, consultants and specialists
+21200	3	Architects
+21201	3	Landscape architects
+21203	3	Land surveyors
+21234	3	Web developers and programmers
+22214	3	Technical occupations in geomatics and meteorology
+22232	3	Occupational health and safety specialists
+22233	3	Construction inspectors
+22310	3	Electrical and electronics engineering technologists and technicians
+22313	3	Aircraft instrument, electrical and avionics mechanics, technicians and inspectors
+31121	3	Dietitians and nutritionists
+32102	3	Paramedical occupations
+32103	3	Respiratory therapists, clinical perfusionists and cardiopulmonary technologists
+32120	3	Medical laboratory technologists
+32121	3	Medical radiation technologists
+32122	3	Medical sonographers
+41300	3	Social workers
+41400	3	Natural and applied science policy researchers, consultants and program officers
+41403	3	Social policy researchers, consultants and program officers
+41405	3	Education policy researchers, consultants and program officers
+41409	3	Other professional occupations in social science
+43201	3	Correctional service officers
+43203	3	Border services, customs, and immigration officers
+50012	3	Recreation, sports and fitness program and service directors
+51101	3	Conservators and curators
+51102	3	Archivists
+51111	3	Authors and writers (except technical)
+51112	3	Technical writers
+51120	3	Producers, directors, choreographers and related occupations
+52112	3	Broadcast technicians
+60020	3	Retail and wholesale trade managers
+60031	3	Accommodation service managers
+60040	3	Managers in customer and personal services
+72010	3	Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations
+72013	3	Contractors and supervisors, carpentry trades
+72014	3	Contractors and supervisors, other construction trades, installers, repairers and servicers
+72020	3	Contractors and supervisors, mechanic trades
+72021	3	Contractors and supervisors, heavy equipment operator crews
+72102	3	Sheet metal workers
+72105	3	Ironworkers
+72201	3	Industrial electricians
+72302	3	Gas fitters
+72320	3	Bricklayers
+72321	3	Insulators
+72401	3	Heavy-duty equipment mechanics
+72403	3	Railway carmen/women
+72404	3	Aircraft mechanics and aircraft inspectors
+72500	3	Crane operators
+72602	3	Deck officers, water transport
+72603	3	Engineer officers, water transport
+73311	3	Railway conductors and brakemen/women
+82010	3	Supervisors, logging and forestry
+83100	3	Underground production and development miners
+83120	3	Fishing masters and officers
+92010	3	Supervisors, mineral and metal processing
+93102	3	Pulping, papermaking and coating control operators
