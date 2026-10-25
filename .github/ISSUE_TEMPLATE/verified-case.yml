@@ -1,0 +1,85 @@
+name: Verified case / 提交一个官方分数对照案例
+description: Share the inputs and the score IRCC shows, so we can check the calculator against real results. 贴上输入和官方显示的分数,帮我们核对计算器。
+title: "[case] "
+labels: ["verified-case"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Privacy first / 请先看隐私:** only post the numbers below. Do **not** include your name, date of birth, UCI, employer name, email or screenshots showing them. Round the age to the age you were on the date of the score.
+        只贴下面这些数字,**不要**写姓名、出生日期、UCI、雇主名称、邮箱,也不要贴带这些信息的截图。
+        This repo is an unofficial tool. Single applicants only. 仅限单身申请人。
+  - type: dropdown
+    id: source
+    attributes:
+      label: Where does the official score come from? / 官方分数来自哪里
+      options:
+        - My Express Entry profile (account) / EE 账户里的分数
+        - Official IRCC CRS tool (questionnaire) / 官方 CRS 计算工具
+        - Other / 其他
+    validations:
+      required: true
+  - type: dropdown
+    id: era
+    attributes:
+      label: Which rules did that official score use? / 官方分数用的是哪套规则
+      description: The new high-wage points start on 2026-11-03. 新政从 2026-11-03 起生效。
+      options:
+        - Before 2026-11-03 (current rules) / 11 月 3 日前(现行规则)
+        - On or after 2026-11-03 (new rules) / 11 月 3 日后(新规则)
+    validations:
+      required: true
+  - type: input
+    id: official_score
+    attributes:
+      label: Official score shown / 官方显示的分数
+      placeholder: "e.g. 389"
+    validations:
+      required: true
+  - type: input
+    id: date_checked
+    attributes:
+      label: Date you read the score / 读取分数的日期
+      placeholder: "YYYY-MM-DD"
+    validations:
+      required: true
+  - type: textarea
+    id: inputs
+    attributes:
+      label: Inputs / 输入
+      description: Please copy this list and fill every line. 请复制并逐行填写。
+      value: |
+        age:
+        highest education (none / secondary / 1yr / 2yr / bachelor / two_plus / master / phd):
+        language CLB listening / reading / writing / speaking:
+        Canadian work experience, whole years (0-5):
+        foreign work experience, whole years (0-3):
+        Canadian post-secondary credential (none / 1-2 / 3plus):
+        sibling who is a citizen/PR in Canada (yes / no):
+        French (none / 25 / 50, or NCLC levels):
+        provincial nomination (yes / no):
+        NOC of the 12+ months of Canadian experience, if on the high-wage list (code or none):
+        NOC of the qualifying job offer, if any (code or none):
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: calc
+    attributes:
+      label: What the calculator says / 计算器的结果
+      description: Paste the output of `python crs_calc.py ...` (the `total` fields are enough), or write "not run". 贴 `crs_calc.py` 的输出,或写"没跑"。
+      render: json
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else? / 其他说明
+      description: For example, the official score is higher or lower than the calculator's, and which line you think differs. 比如官方分数更高或更低,你认为哪一项不同。
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirm / 确认
+      options:
+        - label: I removed my name, date of birth, UCI, employer and other identifying details. 我已去掉姓名、出生日期、UCI、雇主等可识别信息。
+          required: true
+        - label: I am a single applicant (no accompanying spouse/partner). 我是单身申请人。
+          required: true

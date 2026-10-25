@@ -12,6 +12,8 @@ Canada **Express Entry CRS score** under the **high-wage occupation points that 
 > An earlier version of this repo stacked the offer points on top of years-of-work points and overstated scores by up to 70. It is fixed, and the story is in `references/policy-rules.md`. If you find another discrepancy, please open an issue with your inputs and the official result.
 >
 > **Single applicants only.** With a spouse the caps and tables differ and the result will be wrong.
+>
+> **Help us verify it.** If you can read an official score (your EE profile or the IRCC tool), please [submit a verified case](https://github.com/yuhanzsunny-oss/ee-crs-high-wage-score/issues/new?template=verified-case.yml) with your inputs and that score, no personal details. Every matching or mismatching case makes the calculator more trustworthy. After 2026-11-03, cases that use the new rules are the most valuable.
 
 ## What it does
 
