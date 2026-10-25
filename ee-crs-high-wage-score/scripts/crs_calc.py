@@ -113,6 +113,12 @@ def transferability(p, cdn_years, band):
 def compute(p, policy=True):
     noc = load_noc()
     cdn_years = int(p.get("cdn_years", 0))
+    warnings = []
+    cdn_edu = p.get("cdn_edu", "none")
+    if cdn_edu != "none" and p["edu"] in ("none", "secondary"):
+        # A Canadian post-secondary credential cannot coexist with a highest education of secondary or less.
+        warnings.append("cdn_edu ignored: Canadian education points need a post-secondary credential (check 'edu').")
+        cdn_edu = "none"
     clb = p["clb"]
     band = lang_band(clb)
     bd = {}
@@ -140,13 +146,13 @@ def compute(p, policy=True):
 
     tr, tr_detail = transferability(p, cdn_years, band)
     bd["skill_transferability"] = tr
-    bd["canadian_education"] = {"none": 0, "1-2": 15, "3plus": 30}[p.get("cdn_edu", "none")]
+    bd["canadian_education"] = {"none": 0, "1-2": 15, "3plus": 30}[cdn_edu]
     bd["sibling_in_canada"] = 15 if p.get("sibling") else 0
     bd["french_bonus"] = {"none": 0, "25": 25, "50": 50}[str(p.get("french", "none"))]
     bd["provincial_nomination"] = 600 if p.get("pnp") else 0
     total = sum(bd.values())
     return {"total": total, "breakdown": bd, "transferability_groups": tr_detail,
-            "policy_detail": bonus_note, "exp_tier": exp_t, "offer_tier": offer_t}
+            "policy_detail": bonus_note, "exp_tier": exp_t, "offer_tier": offer_t, "warnings": warnings}
 
 
 def report(p):

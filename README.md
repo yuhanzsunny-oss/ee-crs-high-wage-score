@@ -7,7 +7,7 @@ Canada **Express Entry CRS score** under the **high-wage occupation points that 
 
 ## Status (read this first)
 
-> **Not yet verified against the official IRCC calculator.** IRCC has not updated its CRS tool for the rules that take effect on 2026-11-03, so the new-policy part cannot be checked against it yet. The tables and the rule "work-experience route **or** job-offer route, whichever is higher, never both" come from IRCC's own pages (links in `references/policy-rules.md`), and the calculator matches an independent open-source implementation on 8,424 generated profiles. That rules out coding mistakes, not a shared misreading of the source. **After 2026-11-03, check your result with the official tool.**
+> **Not yet verified against the official IRCC calculator.** IRCC has not updated its CRS tool for the rules that take effect on 2026-11-03, so the new-policy part cannot be checked against it yet. The tables and the rule "work-experience route **or** job-offer route, whichever is higher, never both" come from IRCC's own pages (links in `references/policy-rules.md`), and the calculator matches two independent open-source implementations on 30,000 random profiles under both rule sets (the only disagreement was on self-contradictory inputs, now rejected with a warning). That rules out coding mistakes, not a shared misreading of the source. **After 2026-11-03, check your result with the official tool.**
 >
 > An earlier version of this repo stacked the offer points on top of years-of-work points and overstated scores by up to 70. It is fixed, and the story is in `references/policy-rules.md`. If you find another discrepancy, please open an issue with your inputs and the official result.
 >
@@ -48,7 +48,7 @@ Optional: `--second-clb`, `--french 25|50`, `--sibling`, `--pnp`, `--exp-noc`, o
 
 - **Single applicants only** (the cap is 140, not 150, with a spouse; tables differ).
 - No certificate-of-qualification group.
-- Cross-checked against an independent open-source implementation on 8,424 generated profiles: 0 differences (this caught a real bug in an earlier version, documented in `references/policy-rules.md`).
+- Cross-checked against two independent open-source implementations on 30,000 random profiles: 0 differences on consistent inputs (this caught a real bug in an earlier version, documented in `references/policy-rules.md`).
 - The market snapshot (draw cut-offs, pool distribution) is dated October 2026 and goes stale.
 
 ## Sources

@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Regression tests on fictional profiles. Every expected number was derived by hand
 from the IRCC CRS tables (see comments), not copied from the calculator's output.
-The calculator was also compared with an independent open-source implementation on 8,424
-generated profiles (all non-policy tables and the Labour Market Integration factor): 0 differences.
+The calculator was also compared with two independent open-source implementations
+(cal924/canada-crs-calculator, stevenleung2018/crs_calculator) on 30,000 random profiles, under both
+the current rules and the 2026-11-03 rules: 0 differences on the 24,991 self-consistent profiles. The only
+disagreement was one implementation crediting a Canadian degree to someone whose highest education is
+secondary or less, which this calculator now rejects with a warning.
 Run: python test_crs_calc.py"""
 import os
 import sys
@@ -69,6 +72,14 @@ for name, p, policy, want in CASES:
 def delta(p):
     return compute(p, True)["total"] - compute(p, False)["total"]
 
+
+# Contradictory input: secondary education cannot come with a Canadian post-secondary credential.
+SEC = dict(age=27, edu="secondary", clb=[9] * 4)
+for name, got, want in [("secondary + claimed Canadian degree -> no Canadian education points",
+                         compute(dict(SEC, cdn_edu="3plus"), False)["total"], compute(SEC, False)["total"])]:
+    ok = got == want
+    fails += not ok
+    print(("PASS" if ok else "FAIL"), f"{name}: got {got}, want {want}")
 
 # Deltas over the no-policy score. The offer replaces, it does not add to, the years-of-work points.
 BIG = dict(age=29, edu="master", clb=[10] * 4, cdn_years=5, foreign_years=3, cdn_edu="3plus")
