@@ -5,6 +5,14 @@ Canada **Express Entry CRS score** under the **high-wage occupation points that 
 
 适用于加拿大 Express Entry:算 CRS 分数,并判断 2026-11-03 起的"高薪职业加分"(offer / 12 个月经验,Tier 1/2/3;工作经验与 offer 二选一取高,最高 150)能给你加多少分。
 
+## Status (read this first)
+
+> **Not yet verified against the official IRCC calculator.** IRCC has not updated its CRS tool for the rules that take effect on 2026-11-03, so the new-policy part cannot be checked against it yet. The tables and the rule "work-experience route **or** job-offer route, whichever is higher, never both" come from IRCC's own pages (links in `references/policy-rules.md`), and the calculator matches an independent open-source implementation on 8,424 generated profiles. That rules out coding mistakes, not a shared misreading of the source. **After 2026-11-03, check your result with the official tool.**
+>
+> An earlier version of this repo stacked the offer points on top of years-of-work points and overstated scores by up to 70. It is fixed, and the story is in `references/policy-rules.md`. If you find another discrepancy, please open an issue with your inputs and the official result.
+>
+> **Single applicants only.** With a spouse the caps and tables differ and the result will be wrong.
+
 ## What it does
 
 - Computes CRS for a **single applicant** from the official IRCC tables, with and without the new policy, and shows the delta.
